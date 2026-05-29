@@ -1,5 +1,6 @@
 import chromadb
 import json
+import hashlib
 from sentence_transformers import SentenceTransformer
 from datasets import load_dataset
 from dotenv import load_dotenv
@@ -78,7 +79,7 @@ def store_papers(papers, collection):
         paper_id = paper["id"].replace("/", "_")
 
         # combine title + abstract as the text
-        text = f"Title: {paper['title']}\n\nAbstract: {paper['abstract']}"
+        text = f"Title: {paper.get('title','')}\n\nAbstract: {paper.get('abstract','')}"
         chunks = chunk_text(text)
 
         if not chunks:
@@ -88,9 +89,9 @@ def store_papers(papers, collection):
         embeddings = embedder.encode(chunks).tolist()
         metadatas = [
             {
-                "title": paper["title"],
-                "authors": paper.get("authors", "Unknown")[:100],
-                "published": paper.get("update_date", "Unknown"),
+                "title": paper.get("title", "Unknown"),
+                "authors": "Unknown",
+                "published": "Unknown",
                 "paper_id": paper_id,
                 "section": "abstract",
                 "chunk_index": i
@@ -123,10 +124,9 @@ def main():
 
     # stream the dataset — don't download all 2M papers
     dataset = load_dataset(
-        "arxiv_dataset",
+        "CShorten/ML-ArXiv-Papers",
         split="train",
-        streaming=True,
-        trust_remote_code=True
+        streaming=True
     )
 
     # collect matched papers per topic
@@ -139,16 +139,18 @@ def main():
     for paper in dataset:
         total_scanned += 1
 
-        # only ML categories
-        categories = paper.get("categories", "")
-        if not any(cat in categories for cat in ML_CATEGORIES):
+        # this dataset is already filtered to cs.LG — no category check needed
+        # generate a unique id from title since 'id' field may not exist
+        title = paper.get("title", "")
+        if not title:
             continue
-
-        # skip already stored
-        paper_id = paper.get("id", "").replace("/", "_")
+        
+        import hashlib
+        paper_id = hashlib.md5(title.encode()).hexdigest()[:16]
+        paper["id"] = paper_id
+        
         if paper_id in stored_ids:
             continue
-
         # check each topic
         for topic, keywords in TOPIC_KEYWORDS.items():
             if len(topic_papers[topic]) < target_per_topic:

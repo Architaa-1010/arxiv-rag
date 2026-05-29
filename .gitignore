@@ -1,0 +1,28 @@
+# virtual environment
+venv/
+
+# API keys
+.env
+
+# downloaded PDFs (too large for GitHub)
+data/
+
+# ChromaDB database (rebuilt from script)
+chroma_db/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# VS Code
+.vscode/
+
+# eval results (optional to commit)
+eval_results.json
+
+# OS files
+.DS_Store
+Thumbs.db

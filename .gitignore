@@ -26,3 +26,6 @@ eval_results.json
 # OS files
 .DS_Store
 Thumbs.db
+chroma_deploy/
+chroma_deploy.zip
+chroma_db/

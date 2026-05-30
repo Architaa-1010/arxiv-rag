@@ -7,8 +7,10 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green)
 ![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector_DB-orange)
 ![LLaMA](https://img.shields.io/badge/LLaMA_3.3_70B-Groq-purple)
+**[🚀 Live Demo](https://huggingface.co/spaces/Architaa-1010/arxiv-rag)**
 
 ---
+
 
 ## 🎯 What It Does
 

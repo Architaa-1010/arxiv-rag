@@ -86,7 +86,7 @@ Cited Answer
 
 <h2>Sidebar</h2>
 
-<img src="HelpBox.png" height="450" width="300">
+<img src="HelpBox.png" height="450" width="200">
 
 ## 📚 Knowledge Base
 

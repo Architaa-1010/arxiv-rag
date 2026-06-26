@@ -74,6 +74,20 @@ Cited Answer
 
 ---
 
+## Screenshots
+
+<h2>ArXiv Assistant Overview</h2>
+
+<img src="Overview.png" width="900">
+
+<h2>Working</h2>
+
+<img src="AnswerModel.png" width="900">
+
+<h2>Sidebar</h2>
+
+<img src="HelpBox.png" width="900">
+
 ## 📚 Knowledge Base
 
 | Source | Papers | Method |
@@ -212,11 +226,11 @@ targeted corpus expansion.
 
 - [ ] Add citation graph — surface foundational papers behind any answer
 - [ ] Weekly digest mode — auto-summarize new cs.LG papers
-- [ ] Deploy to cloud (Render/Railway)
 - [ ] Add BM25 hybrid retrieval alongside dense retrieval
 - [ ] Expand corpus to 5,000+ papers
 
 ---
 
-*Built as a portfolio project to demonstrate end-to-end ML engineering:
-retrieval systems, vector databases, LLM integration, and evaluation-driven development.*
+## Author
+
+Architaa A

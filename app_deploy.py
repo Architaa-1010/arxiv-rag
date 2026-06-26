@@ -27,6 +27,24 @@ st.markdown("""
 [data-testid="stChatInput"] textarea { background-color: #F7F5F2 !important; border: 1px solid #E5E7EB !important; }
 h1 { background: linear-gradient(135deg, #C96C4A, #D9A441); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800 !important; }
 a { color: #C96C4A !important; }
+            /* Force light theme text visibility */
+.stApp, .stApp p, .stApp div, .stApp span, .stApp label {
+    color: #1F2937 !important;
+}
+h1, h2, h3 {
+    color: #C96C4A !important;
+    -webkit-text-fill-color: #C96C4A !important;
+}
+.stChatMessage p {
+    color: #374151 !important;
+}
+/* Fix dark header/footer */
+header[data-testid="stHeader"] {
+    background-color: #FFFFFF !important;
+}
+footer {
+    background-color: #F7F5F2 !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
